@@ -1,15 +1,15 @@
 // Advent of Code 2022
-// Day 1/Part 1
+// Day 1/Part 2
 // https://adventofcode.com/2022/day/1
 use std::io::{self, BufRead};
-use std::cmp;
 
-fn main() -> io::Result<()> {
+#[allow(dead_code)]
+fn d1b() -> io::Result<()> {
     let stdin = io::stdin();
     let lines = stdin.lock().lines();
 
-    let mut result: i32 = 0;
     let mut sum: i32 = 0;
+    let mut v: Vec<i32> = Vec::new();
 
     for line in lines {
         let content: String = line.unwrap();
@@ -18,9 +18,17 @@ fn main() -> io::Result<()> {
             let calories = content.parse::<i32>().unwrap();
             sum += calories;
         } else {
-            result = cmp::max(result, sum);
+            v.push(sum);
             sum = 0;
         }
+    }
+
+    v.sort();
+
+    let mut result: i32 = 0;
+
+    for i in 1..4 {
+        result += v.get(v.len() - i).unwrap();
     }
 
     println!("{}", result);
