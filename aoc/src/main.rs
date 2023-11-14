@@ -12,11 +12,13 @@ mod d6a;
 mod d6b;
 mod d7a;
 mod d7b;
+mod d8a;
+mod d8b;
 
 use std::io;
 
 fn main() -> io::Result<()> {
-    match d7b::d7b() {
+    match d8b::d8b() {
         Ok(_) => println!("Success!"),
         Err(_) => println!("Execution failure."),
     }
